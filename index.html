@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GordisPanchos San Rafael</title>
+<meta name="description" content="GordisPanchos: los panchos más completos de San Rafael. Pedí por WhatsApp al 260 404-2501. Emilio Civit 1444.">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Kaushan+Script&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amarillo: #FFC72C;
+    --amarillo-osc: #E5A800;
+    --negro: #0E0E0E;
+    --negro-2: #1A1A1A;
+    --gris: #2A2A2A;
+    --blanco: #FFF8E7;
+    --texto-suave: #CFC6B0;
+    --wa: #25D366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: "Montserrat", system-ui, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- Barra superior ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14,14,14,.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--amarillo);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .marca img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--amarillo); object-fit: cover; }
+  .marca span { font-family: "Kaushan Script", cursive; font-size: 24px; color: var(--amarillo); }
+  .nav ul { display: flex; gap: 22px; list-style: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; }
+  .nav ul a { text-decoration: none; }
+  .nav ul a:hover { color: var(--amarillo); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--amarillo); color: var(--negro);
+    font-weight: 800; text-transform: uppercase; letter-spacing: .03em;
+    text-decoration: none; border-radius: 999px;
+    padding: 12px 22px; font-size: 15px;
+    transition: transform .15s, background .15s;
+    border: 0; cursor: pointer;
+  }
+  .btn:hover { transform: translateY(-2px); background: #FFD45C; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+  @media (max-width: 760px) { .nav ul { display: none; } }
+
+  /* ---------- Hero con panchos en movimiento ---------- */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 64px);
+    display: grid; place-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 45%, #3A2A05 0%, var(--negro) 70%);
+  }
+  .cinta {
+    position: absolute; left: 0; width: 100%;
+    display: flex; overflow: hidden;
+    pointer-events: none;
+  }
+  .cinta-track {
+    display: flex; align-items: center; gap: 40px;
+    padding-right: 40px;
+    flex: none;
+    animation: correr 38s linear infinite;
+  }
+  .cinta-track img {
+    height: var(--alto, 210px); width: auto;
+    filter: drop-shadow(0 18px 22px rgba(0,0,0,.6));
+  }
+  .cinta.c1 { top: 4%; --alto: 200px; }
+  .cinta.c2 { top: 36%; --alto: 260px; opacity: .55; filter: blur(1.5px); }
+  .cinta.c3 { bottom: 4%; --alto: 200px; }
+  .cinta.c2 .cinta-track { animation-duration: 52s; animation-direction: reverse; }
+  .cinta.c3 .cinta-track { animation-duration: 44s; }
+  .cinta.c1 img:nth-child(odd), .cinta.c3 img:nth-child(even) { transform: rotate(-8deg); }
+  .cinta.c1 img:nth-child(even), .cinta.c3 img:nth-child(odd) { transform: rotate(7deg); }
+  @media (max-width: 560px) {
+    .cinta.c1, .cinta.c3 { --alto: 150px; }
+    .cinta.c2 { --alto: 190px; }
+  }
+  @keyframes correr { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+  @media (prefers-reduced-motion: reduce) { .cinta-track { animation-duration: 160s; } }
+
+  .hero-velo {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 45% at 50% 50%, rgba(14,14,14,.82) 0%, rgba(14,14,14,.35) 70%, rgba(14,14,14,0) 100%);
+    pointer-events: none;
+  }
+  .hero-texto {
+    position: relative; z-index: 2;
+    text-align: center; padding: 40px 16px;
+    max-width: 820px;
+  }
+  .hero-logo {
+    width: 116px; height: 116px; margin: 0 auto 14px;
+    border-radius: 50%; border: 4px solid var(--amarillo);
+    object-fit: cover; box-shadow: 0 0 0 8px rgba(255,199,44,.18);
+  }
+  .hero h1 {
+    font-family: "Kaushan Script", cursive; font-weight: 400;
+    color: var(--amarillo);
+    font-size: clamp(48px, 10vw, 108px);
+    line-height: 1;
+    text-shadow: 4px 4px 0 #000, 0 0 30px rgba(0,0,0,.8);
+  }
+  .hero .lema {
+    font-family: "Anton", sans-serif; text-transform: uppercase;
+    font-size: clamp(26px, 5vw, 52px); line-height: 1.05;
+    margin-top: 10px; letter-spacing: .01em;
+    text-shadow: 3px 3px 0 #000, 0 0 24px rgba(0,0,0,.9);
+  }
+  .hero .lema em { font-style: normal; color: var(--amarillo); }
+  .hero .sub {
+    margin: 16px auto 26px; max-width: 520px;
+    font-weight: 700; color: var(--blanco);
+    text-shadow: 0 2px 10px #000;
+  }
+  .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-borde { background: transparent; color: var(--amarillo); border: 2px solid var(--amarillo); }
+  .btn-borde:hover { background: rgba(255,199,44,.12); }
+
+  /* ---------- Títulos de sección ---------- */
+  section { padding: 80px 0; }
+  .titulo { text-align: center; margin-bottom: 40px; }
+  .titulo small {
+    display: block; font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--amarillo); font-size: 13px; margin-bottom: 4px;
+  }
+  .titulo h2 {
+    font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase;
+    font-size: clamp(40px, 7vw, 72px); line-height: 1;
+  }
+  .titulo h2 span { font-family: "Kaushan Script", cursive; color: var(--amarillo); text-transform: none; }
+
+  /* ---------- Menú ---------- */
+  .menu { background: var(--amarillo); color: var(--negro); position: relative; }
+  .menu::before, .menu::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 26px;
+    background: radial-gradient(circle at 13px 0, var(--negro) 13px, transparent 14px) repeat-x;
+    background-size: 26px 26px;
+  }
+  .menu::before { top: 0; }
+  .menu::after { bottom: 0; transform: rotate(180deg); }
+  .menu .titulo small { color: var(--negro); }
+  .menu .titulo h2 span { color: var(--negro); }
+  .menu-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; }
+  @media (max-width: 900px) { .menu-grid { grid-template-columns: 1fr; } }
+  .caja {
+    background: var(--negro); color: var(--blanco);
+    border-radius: 22px; padding: 28px 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,.25);
+  }
+  .caja h3 {
+    font-family: "Kaushan Script", cursive; font-weight: 400; color: var(--amarillo);
+    font-size: 34px; margin-bottom: 12px;
+  }
+  .item { padding: 14px 0; border-bottom: 1px dashed #444; }
+  .item:last-child { border-bottom: 0; }
+  .item-top { display: flex; align-items: baseline; gap: 10px; }
+  .item-nombre { font-family: "Anton", sans-serif; text-transform: uppercase; font-size: 22px; letter-spacing: .02em; }
+  .item-puntos { flex: 1; border-bottom: 2px dotted #555; transform: translateY(-6px); min-width: 20px; }
+  .item-precio { font-family: "Anton", sans-serif; font-size: 24px; color: var(--amarillo); white-space: nowrap; }
+  .item p { color: var(--texto-suave); font-size: 14px; font-weight: 500; margin-top: 2px; }
+  .lado { display: grid; gap: 28px; align-content: start; }
+  .listas { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .listas ul { list-style: none; font-weight: 700; font-size: 14px; }
+  .listas li { padding: 4px 0; }
+  .listas li::before { content: "● "; color: var(--amarillo); }
+  .listas h4 { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; color: var(--amarillo); font-size: 20px; margin-bottom: 6px; }
+
+  /* ---------- Fotos de cada pancho ---------- */
+  .panchos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .panchos-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .panchos-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--negro-2); border-radius: 22px; overflow: hidden;
+    border: 2px solid var(--gris);
+    display: flex; flex-direction: column;
+    transition: transform .2s, border-color .2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--amarillo); }
+  .card-foto { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+  .card-foto img { width: 100%; height: 100%; object-fit: cover; }
+  .precio-badge {
+    position: absolute; top: 14px; right: 14px;
+    width: 84px; height: 84px; border-radius: 50%;
+    background: var(--amarillo); color: var(--negro);
+    display: grid; place-items: center; text-align: center;
+    font-family: "Anton", sans-serif; font-size: 22px; line-height: 1;
+    border: 3px solid var(--negro);
+    box-shadow: 0 6px 16px rgba(0,0,0,.45);
+    transform: rotate(8deg);
+  }
+  .precio-badge small { display: block; font-family: "Montserrat"; font-weight: 800; font-size: 10px; letter-spacing: .1em; }
+  .card-cuerpo { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card-cuerpo h3 { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 30px; line-height: 1.05; }
+  .card-cuerpo p { color: var(--texto-suave); font-size: 14px; font-weight: 500; flex: 1; }
+  .card-cuerpo .btn { margin-top: 12px; width: 100%; }
+
+  /* ---------- Combos destacados en fotos ---------- */
+  .banda {
+    background: var(--amarillo); color: var(--negro);
+    text-align: center; padding: 18px 16px;
+    font-family: "Anton", sans-serif; text-transform: uppercase;
+    font-size: clamp(20px, 3.5vw, 32px); letter-spacing: .02em;
+  }
+
+  /* ---------- Dónde estamos ---------- */
+  .donde-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 800px) { .donde-grid { grid-template-columns: 1fr; } }
+  .dato {
+    background: var(--negro-2); border: 2px solid var(--gris); border-radius: 22px;
+    padding: 26px 22px; text-align: center; text-decoration: none;
+    transition: border-color .2s;
+  }
+  .dato:hover { border-color: var(--amarillo); }
+  .dato svg { width: 40px; height: 40px; color: var(--amarillo); margin: 0 auto 10px; }
+  .dato h4 { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 22px; }
+  .dato p { color: var(--texto-suave); font-weight: 700; }
+
+  footer { border-top: 2px solid var(--amarillo); padding: 28px 0 100px; text-align: center; color: var(--texto-suave); font-size: 13px; }
+  footer strong { font-family: "Kaushan Script", cursive; color: var(--amarillo); font-size: 26px; font-weight: 400; display: block; }
+
+  /* ---------- Botón flotante WhatsApp ---------- */
+  .wa-flotante {
+    position: fixed; right: 18px; bottom: 18px; z-index: 60;
+    width: 62px; height: 62px; border-radius: 50%;
+    background: var(--wa); color: #fff;
+    display: grid; place-items: center;
+    box-shadow: 0 8px 22px rgba(0,0,0,.5);
+    animation: latido 2.4s ease-in-out infinite;
+  }
+  .wa-flotante svg { width: 34px; height: 34px; }
+  @keyframes latido { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43m8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.8.7.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.3 11.3 0 0 0 5.42 1.38h.01c6.26 0 11.36-5.1 11.36-11.36 0-3.03-1.18-5.89-3.33-8.03"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22Z"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="marca" href="#inicio"><img src="img/logo.jpg" alt="Logo GordisPanchos"><span>GordisPanchos</span></a>
+    <ul>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#panchos">Panchos</a></li>
+      <li><a href="#donde">Dónde estamos</a></li>
+    </ul>
+    <a class="btn btn-sm" data-wa href="#"><svg><use href="#i-wa"/></svg>Pedir</a>
+  </div>
+</nav>
+
+<!-- HERO: los panchos pasan por detrás del texto -->
+<header class="hero" id="inicio">
+  <div class="cinta c1" data-cinta></div>
+  <div class="cinta c2" data-cinta></div>
+  <div class="cinta c3" data-cinta></div>
+  <div class="hero-velo"></div>
+
+  <div class="hero-texto">
+    <img class="hero-logo" src="img/logo.jpg" alt="">
+    <h1>GordisPanchos</h1>
+    <p class="lema">¡Probás uno <em>y volvés siempre!</em></p>
+    <p class="sub">Los panchos más completos de San Rafael. Pedí el tuyo por WhatsApp y te lo llevamos.</p>
+    <div class="hero-ctas">
+      <a class="btn" data-wa href="#"><svg><use href="#i-wa"/></svg>Pedir por WhatsApp</a>
+      <a class="btn btn-borde" href="#menu">Ver el menú</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENÚ CON PRECIOS -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="titulo">
+      <small>Precios actualizados</small>
+      <h2>Menú <span>GordisPanchos</span></h2>
+    </div>
+
+    <div class="menu-grid">
+      <div class="caja">
+        <h3>Panchos</h3>
+        <div id="lista-panchos"></div>
+      </div>
+
+      <div class="lado">
+        <div class="caja">
+          <h3>Combos</h3>
+          <div id="lista-combos"></div>
+        </div>
+        <div class="caja">
+          <h3>Bebidas</h3>
+          <div class="item"><div class="item-top"><span class="item-nombre">Agua saborizada 500 ml</span><span class="item-puntos"></span><span class="item-precio">$1.700</span></div></div>
+          <div class="item"><div class="item-top"><span class="item-nombre">Agua saborizada 1,5 L</span><span class="item-puntos"></span><span class="item-precio">$2.900</span></div></div>
+        </div>
+        <div class="caja listas">
+          <div>
+            <h4>Salsas</h4>
+            <ul><li>Guacamole</li><li>Criolla</li><li>Provenzal</li><li>Cebolla caramelizada</li><li>Gordisalsa</li></ul>
+          </div>
+          <div>
+            <h4>Aderezos</h4>
+            <ul><li>Mayonesa</li><li>Ketchup</li><li>Mostaza</li><li>Salsa golf</li><li>Cheddar</li><li>Barbacoa</li><li>Picante</li><li>Parmesano</li><li>Mayonesa de ajo</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTOS DE CADA PANCHO -->
+<section id="panchos">
+  <div class="wrap">
+    <div class="titulo">
+      <small>Elegí el tuyo</small>
+      <h2>Nuestros <span>Panchos</span></h2>
+    </div>
+    <div class="panchos-grid" id="grid-panchos"></div>
+  </div>
+</section>
+
+<div class="banda">🔥 ¡Pedí el tuyo ahora y te lo llevamos! 🔥</div>
+
+<!-- DÓNDE ESTAMOS -->
+<section id="donde">
+  <div class="wrap">
+    <div class="titulo">
+      <small>Vení o pedí</small>
+      <h2>Dónde <span>estamos</span></h2>
+    </div>
+    <div class="donde-grid">
+      <a class="dato" href="https://www.google.com/maps/search/?api=1&query=Emilio+Civit+1444,+San+Rafael,+Mendoza,+Argentina" target="_blank" rel="noopener">
+        <svg><use href="#i-pin"/></svg>
+        <h4>Dirección</h4>
+        <p>Emilio Civit 1444</p>
+      </a>
+      <a class="dato" data-wa href="#" target="_blank" rel="noopener">
+        <svg><use href="#i-wa"/></svg>
+        <h4>WhatsApp</h4>
+        <p>260 404-2501</p>
+      </a>
+      <a class="dato" href="https://www.instagram.com/gordispanchos_/" target="_blank" rel="noopener">
+        <svg><use href="#i-ig"/></svg>
+        <h4>Instagram</h4>
+        <p>@gordispanchos_</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>GordisPanchos</strong>
+    Emilio Civit 1444 · WhatsApp 260 404-2501 · @gordispanchos_
+  </div>
+</footer>
+
+<a class="wa-flotante" data-wa href="#" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+  // Número de WhatsApp en formato internacional (Argentina, San Rafael 260)
+  var WHATSAPP = "5492604042501";
+
+  var PANCHOS = [
+    { id: "superpancho",  nombre: "Superpancho",  precio: 2800, desc: "Aderezos + salsas + papas pay" },
+    { id: "primavera",    nombre: "Primavera",    precio: 3300, desc: "Jamón cocido + queso barra + 3 aderezos. Sin salsas, sin papas pay" },
+    { id: "extracheddar", nombre: "Extracheddar", precio: 3500, desc: "Fetas de cheddar + extra cheddar + 2 aderezos + 1 salsa + papas pay" },
+    { id: "mexicano",     nombre: "Mexicano",     precio: 3700, desc: "Guacamole + picante + 2 aderezos + 1 salsa. Sin papas pay" },
+    { id: "quesalame",    nombre: "Quesalame",    precio: 4000, desc: "Salame Milán + queso barra + 2 aderezos + 1 salsa + papas pay" },
+    { id: "panchofrito",  nombre: "Pancho Frito", precio: 4000, desc: "Salchicha frita + huevo frito + 3 aderezos + 1 salsa + papas pay" },
+    { id: "doripancho",   nombre: "Doripancho",   precio: 4700, desc: "Salsa de Doritos + panceta + lluvia de Doritos" }
+  ];
+
+  var COMBOS = [
+    { nombre: "Familiar",   precio: 11990, desc: "4 Superpanchos + agua saborizada 1,5 L" },
+    { nombre: "Mexicano",   precio: 8990,  desc: "2 Mexicanos + 2 aguas saborizadas 500 ml" },
+    { nombre: "Extra",      precio: 8490,  desc: "2 Extracheddar + 2 aguas saborizadas 500 ml" },
+    { nombre: "Dúo",        precio: 7490,  desc: "2 Superpanchos + 2 aguas saborizadas 500 ml" },
+    { nombre: "Individual", precio: 3990,  desc: "1 Superpancho + 1 agua saborizada 500 ml" }
+  ];
+
+  // Panchos con foto (el Superpancho todavía no tiene)
+  var CON_FOTO = ["doripancho", "extracheddar", "mexicano", "panchofrito", "quesalame", "primavera"];
+
+  function plata(n) { return "$" + n.toLocaleString("es-AR"); }
+  function linkWA(texto) { return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto); }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function filaMenu(it) {
+    return '<div class="item"><div class="item-top"><span class="item-nombre">' + esc(it.nombre) +
+      '</span><span class="item-puntos"></span><span class="item-precio">' + plata(it.precio) +
+      '</span></div><p>' + esc(it.desc) + '</p></div>';
+  }
+  document.getElementById("lista-panchos").innerHTML = PANCHOS.map(filaMenu).join("");
+  document.getElementById("lista-combos").innerHTML = COMBOS.map(function (c) {
+    return filaMenu({ nombre: "Combo " + c.nombre, precio: c.precio, desc: c.desc });
+  }).join("");
+
+  // Tarjetas con foto fija y botón "Pedir ahora"
+  document.getElementById("grid-panchos").innerHTML = CON_FOTO.map(function (id) {
+    var p = PANCHOS.filter(function (x) { return x.id === id; })[0];
+    return '<article class="card">' +
+      '<div class="card-foto"><img loading="lazy" src="img/foto-' + id + '.jpg" alt="' + esc(p.nombre) + '">' +
+      '<div class="precio-badge"><div><small>SOLO</small>' + plata(p.precio) + '</div></div></div>' +
+      '<div class="card-cuerpo"><h3>' + esc(p.nombre) + '</h3><p>' + esc(p.desc) + '</p>' +
+      '<a class="btn" target="_blank" rel="noopener" href="' + linkWA("¡Hola GordisPanchos! Quiero pedir un " + p.nombre + " 🌭") + '">' +
+      '<svg><use href="#i-wa"/></svg>Pedir ahora</a></div></article>';
+  }).join("");
+
+  // Todos los botones generales de WhatsApp
+  document.querySelectorAll("[data-wa]").forEach(function (a) {
+    a.href = linkWA("¡Hola GordisPanchos! Quiero hacer un pedido 🌭");
+    a.target = "_blank"; a.rel = "noopener";
+  });
+
+  // Cintas del hero: todos los panchos pasando por detrás del texto
+  var ORDENES = [
+    ["doripancho", "extracheddar", "mexicano", "panchofrito", "primavera", "quesalame"],
+    ["mexicano", "quesalame", "doripancho", "primavera", "extracheddar", "panchofrito"],
+    ["panchofrito", "primavera", "quesalame", "doripancho", "mexicano", "extracheddar"]
+  ];
+  document.querySelectorAll("[data-cinta]").forEach(function (cinta, i) {
+    var imgs = ORDENES[i].concat(ORDENES[i]).map(function (id) {
+      return '<img src="img/cut-' + id + '.webp" alt="">';
+    }).join("");
+    // Dos copias iguales seguidas para que el loop no tenga cortes
+    cinta.innerHTML = '<div class="cinta-track">' + imgs + '</div><div class="cinta-track" aria-hidden="true">' + imgs + '</div>';
+  });
+</script>
+</body>
+</html>
